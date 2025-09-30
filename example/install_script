@@ -1,0 +1,16 @@
+def beforeinst():
+    print("Welcome to car!")
+    print("This is a basic package printing Hello when you run it.")
+
+def deps():
+    print(":: No dependencies reqired")
+
+def build():
+    print(":: No build required")
+
+def install():
+    import os
+    os.system("sudo curl -s -L -o /usr/bin/example htts://github.com/crust-project/car-binary-storage/examplepkg")
+
+def postinst():
+    print("Thanks for using car!")
