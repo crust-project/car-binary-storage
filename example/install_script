@@ -15,3 +15,5 @@ def install():
 
 def postinst():
     print("Thanks for using car!")
+
+version = "0.0.1"
