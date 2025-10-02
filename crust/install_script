@@ -22,15 +22,16 @@ def build():
     for u in r["urls"]:
         if u["packagetype"] == "bdist_wheel" and u["filename"].startswith(f"crust_shell-{version}"):
             url = u["url"]
+            filename = u["filename"]
             break
     if not url:
         print(f":: No wheel found for version {version}")
         return
     print(f":: Found wheel {url}")
-    os.system(f"wget {url} -O crust_shell-{version}.whl")
+    os.system(f"wget {url} -O {filename}")
 
     print("2/2  Installing wheel")
-    os.system(f"pip install crust_shell-{version}.whl --break-system-packages")
+    os.system(f"pip install {filename} --break-system-packages")
 
 def install():
   pass
