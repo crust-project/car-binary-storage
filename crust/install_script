@@ -39,4 +39,4 @@ def postinst():
   print(":: Documentation:")
   print("1/1  https://crust-project.github.io/crust")
   print(":: Thanks for using crust! Please star it on Github.")
-  print("1/1  https://github.com/crust-project/crust")")
+  print("1/1  https://github.com/crust-project/crust")
