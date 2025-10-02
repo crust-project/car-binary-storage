@@ -1,0 +1,42 @@
+version = "0.1.3"
+
+import subprocess
+import os
+import requests
+
+def deps():
+    print("1/2  Checking if pip is installed")
+    result = subprocess.run(["ls", "/usr/bin/"], capture_output=True, text=True)
+    if "pip" in result.stdout:
+        print(":: Pip is installed")
+    else:
+        print(":: Pip is not installed")
+        return
+    print("2/2  Installing dependencies")
+    os.system("pip install rich cohere --break-system-packages")
+
+def build():
+    print("1/2  Downloading wheel")
+    url = None
+    r = requests.get("https://pypi.org/pypi/crust-shell/json").json()
+    for u in r["urls"]:
+        if u["packagetype"] == "bdist_wheel" and u["filename"].startswith(f"crust_shell-{version}"):
+            url = u["url"]
+            break
+    if not url:
+        print(f":: No wheel found for version {version}")
+        return
+    print(f":: Found wheel {url}")
+    os.system(f"wget {url} -O crust_shell-{version}.whl")
+
+    print("2/2  Installing wheel")
+    os.system(f"pip install crust_shell-{version}.whl --break-system-packages")
+
+def install():
+  pass
+
+def postinst():
+  print(":: Documentation:")
+  print("1/1  https://crust-project.github.io/crust")
+  print(":: Thanks for using crust! Please star it on Github.")
+  print("1/1  https://github.com/crust-project/crust")")
