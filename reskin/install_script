@@ -5,7 +5,7 @@ version = "will.be.edited.post.install"
 
 def deps():
   print(":: This package uses pacman - the script will be recoded after our distro removes it completely")
-  os.system("curl --proto '=https' --tlsv1.2 [https://sh.rustup.rs](https://sh.rustup.rs) -sSf | sh")
+  os.system("curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh")
   os.system("sudo pacman -S nodejs npm webkit2gtk xdg-utils desktop-file-utils git --noconfirm")
 
 def build():
