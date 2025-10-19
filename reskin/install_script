@@ -2,6 +2,13 @@ import os
 import subprocess
 
 version = "will.be.edited.post.install"
+maintainer = [
+    {"Name": "iamnotmega", "email": "iamnotmega@proton.me", "nick": "iamnotmega"}
+]
+trusted = "True"
+description = A modern Linux desktop theming app for browsing, applying, and managing custom themes."
+pacman_deps = ["nodejs", "npm", "webkit2gtk", "xdg-utils", "desktop-file-utils", "git"]
+car_deps = []
 
 def deps():
   print(":: This package uses pacman - the script will be recoded after our distro removes it completely")
