@@ -7,7 +7,6 @@ maintainer = [
 ]
 trusted = "True"
 description = "A simple example package that prints 'Hello' when run."
-pacman_deps = []
 car_deps = []
 
 def beforeinst():
