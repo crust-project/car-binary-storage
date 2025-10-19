@@ -1,10 +1,21 @@
-version = "0.1.3"
-
 import subprocess
 import os
 import requests
 
+# Metadata for package manager
+version = "0.1.3"
+maintainer = [
+    {"Name": "Juraj Kollár", "email": "mostypc7@gmail.com", "nick": "mostypc123"}
+]
+trusted = "True"
+description = "A Linux shell for Redrose Linux specifically"
+pacman_deps = []
+car_deps = []
+
 def deps():
+    """
+    Install required Python dependencies using pip.
+    """
     print("1/2  Checking if pip is installed")
     result = subprocess.run(["ls", "/usr/bin/"], capture_output=True, text=True)
     if "pip" in result.stdout:
@@ -12,10 +23,14 @@ def deps():
     else:
         print(":: Pip is not installed")
         return
+
     print("2/2  Installing dependencies")
     os.system("pip install rich cohere --break-system-packages")
 
 def build():
+    """
+    Download and install the Crust Shell wheel for the specified version.
+    """
     print("1/2  Downloading wheel")
     url = None
     r = requests.get("https://pypi.org/pypi/crust-shell/json").json()
@@ -24,9 +39,11 @@ def build():
             url = u["url"]
             filename = u["filename"]
             break
+
     if not url:
         print(f":: No wheel found for version {version}")
         return
+
     print(f":: Found wheel {url}")
     os.system(f"wget {url} -O {filename}")
 
@@ -34,10 +51,16 @@ def build():
     os.system(f"pip install {filename} --break-system-packages")
 
 def install():
-  pass
+    """
+    No additional installation steps required beyond wheel install.
+    """
+    pass
 
 def postinst():
-  print(":: Documentation:")
-  print("1/1  https://crust-project.github.io/crust")
-  print(":: Thanks for using crust! Please star it on Github.")
-  print("1/1  https://github.com/crust-project/crust")
+    """
+    Post-installation info and documentation links.
+    """
+    print(":: Documentation:")
+    print("1/1  https://crust-project.github.io/crust")
+    print(":: Thanks for using Crust! Please star it on GitHub.")
+    print("1/1  https://github.com/crust-project/crust")
