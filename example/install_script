@@ -1,19 +1,31 @@
+import os
+
+# Metadata for the example package
+version = "0.0.1"
+maintainer = [
+    {"Name": "Example Maintainer", "email": "example@example.com", "nick": "example"}
+]
+trusted = "True"
+description = "A simple example package that prints 'Hello' when run."
+pacman_deps = []
+car_deps = []
+
 def beforeinst():
     print("Welcome to car!")
-    print("This is a basic package printing Hello when you run it.")
+    print("This is a basic package printing 'Hello' when you run it.")
 
 def deps():
-    print(":: No dependencies reqired")
+    print(":: No dependencies required")
 
 def build():
     print(":: No build required")
 
 def install():
-    import os
+    """
+    Download the example binary and make it executable
+    """
     os.system("sudo curl -L -o /usr/bin/example https://raw.githubusercontent.com/crust-project/car-binary-storage/main/examplepkg")
     os.system("sudo chmod +x /usr/bin/example")
 
 def postinst():
     print("Thanks for using car!")
-
-version = "0.0.1"
