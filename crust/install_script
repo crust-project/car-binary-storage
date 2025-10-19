@@ -9,7 +9,6 @@ maintainer = [
 ]
 trusted = "True"
 description = "A Linux shell for Redrose Linux specifically"
-pacman_deps = []
 car_deps = []
 
 def deps():
