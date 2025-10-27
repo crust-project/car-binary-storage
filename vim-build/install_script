@@ -1,0 +1,36 @@
+import os
+
+version = "source"
+trusted = "True"
+description = "Vim text editor built from source, with user-selectable install."
+car_deps = ["git"]
+outdated = False
+
+def beforeinst():
+    print(":: Preparing to build Vim from source")
+    print(":: You will be asked whether to run 'make' only or 'make && make install'")
+
+def deps():
+    print(":: Dependencies: git, make, gcc, ncurses-dev")
+
+def build():
+    print(":: Cloning Vim repository")
+    os.system("git clone https://github.com/vim/vim.git || (cd vim && git pull)")
+    os.chdir("vim")
+    print(":: Configuring build")
+    os.system("./configure --with-features=huge --enable-multibyte --enable-gui=no --without-x")
+    print(":: Starting build process")
+    os.system("make -j$(nproc)")
+    print(":: Build complete")
+
+def install():
+    choice = input("Run full install (make install)? [y/N]: ").strip().lower()
+    if choice == "y":
+        print(":: Installing Vim to /usr/local")
+        os.system("sudo make install")
+    else:
+        print(":: Skipping 'make install'. You can run Vim from './vim/src/vim'")
+    os.chdir("..")
+
+def postinst():
+    print(":: Done. If not installed, run './vim/src/vim' to start Vim manually.")
