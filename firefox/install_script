@@ -1,0 +1,17 @@
+version = "144.0.2"
+
+def deps():
+    print(":: No dependencies required")
+
+def build():
+    print(":: No build required")
+
+def install():
+    import os, subprocess, shutil
+    url = t"
+    tarball = "/tmp/firefox.tar.bz2"
+    subprocess.run(["curl", "-L", url, "-o", tarball], check=True)
+    if os.path.exists("/opt/firefox"):
+        shutil.rmtree("/opt/firefox")
+    subprocess.run(["sudo", "tar", "-xjf", tarball, "-C", "/opt"], check=True)
+    subprocess.run(["sudo", "ln", "-sf", "/opt/firefox/firefox", "/usr/local/bin/firefox"], check=True)
