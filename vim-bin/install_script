@@ -1,0 +1,39 @@
+import os
+
+description = "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as 'vi' with most UNIX systems and with Apple OS X."
+trusted = "True"
+version = "9.1.1577.source"
+
+def beforeinst():
+    print(":: Vim is licensed under the Vim license:")
+    print("   https://www.gnu.org/licenses/vim-license.txt")
+    print(":: Vim is charityware. Consider donating:")
+    print("   Paypal: info@kuwasha.net")
+    print("   E-transfer: edonate@kuwasha.net")
+    print("   Bank account:")
+    print("     Kuwasha International Development Society")
+    print("     Institution: 002")
+    print("     Transit/Branch: 81760")
+    print("     Account #: 0059811")
+    print("     Swift code: NOSCCATT")
+    print("     Scotiabank; North Langley Centre, 19989 96 Avenue, Langley, BC V1M 3C6, Canada")
+    print(":: You can also use the vim-build package to build Vim from source.")
+
+def deps():
+    print(":: ncurses required")
+    print(":: ncurses will be soon added to car")
+
+def build():
+    print(":: No build required")
+    print(":: Downloading Vim binary from:")
+    print("   https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim")
+    os.system("curl -s -L -o vim https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim")
+
+def install():
+    os.system("sudo mv ./vim /usr/bin/vim")
+    os.system("sudo chmod +x /usr/bin/vim")
+
+def postinst():
+    print(":: Documentation:")
+    print("   https://www.vim.org/docs.php")
+    print(":: Remember, Vim is charityware. Donations are appreciated!")
