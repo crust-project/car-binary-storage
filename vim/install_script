@@ -26,8 +26,8 @@ def deps():
 def build():
     print(":: No build required")
     print(":: Downloading Vim binary from:")
-    print("   https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim")
-    os.system("curl -s -L -o vim https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim")
+    print("   https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim-bin/vim")
+    os.system("curl -s -L -o vim https://raw.githubusercontent.com/redroselinux/car-binary-storage/main/vim-bin/vim")
 
 def install():
     os.system("sudo mv ./vim /usr/bin/vim")
