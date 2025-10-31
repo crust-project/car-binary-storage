@@ -9,6 +9,18 @@ outdated = False
 def beforeinst():
     print(":: Preparing to build Vim from source")
     print(":: You will be asked whether to run 'make' only or 'make && make install'")
+    print(":: Vim is licensed under the Vim license:")
+    print("   https://www.gnu.org/licenses/vim-license.txt")
+    print(":: Vim is charityware. Consider donating:")
+    print("   Paypal: info@kuwasha.net")
+    print("   E-transfer: edonate@kuwasha.net")
+    print("   Bank account:")
+    print("     Kuwasha International Development Society")
+    print("     Institution: 002")
+    print("     Transit/Branch: 81760")
+    print("     Account #: 0059811")
+    print("     Swift code: NOSCCATT")
+    print("     Scotiabank; North Langley Centre, 19989 96 Avenue, Langley, BC V1M 3C6, Canada")
 
 def deps():
     print(":: Dependencies: git, make, gcc, ncurses-dev")
@@ -34,3 +46,6 @@ def install():
 
 def postinst():
     print(":: Done. If not installed, run './vim/src/vim' to start Vim manually.")
+    print(":: Documentation:")
+    print("   https://www.vim.org/docs.php")
+    print(":: Remember, Vim is charityware. Donations are appreciated!")
