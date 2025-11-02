@@ -1,0 +1,7 @@
+example
+crust
+reskin
+vim-build
+vim-bin
+vim
+firefox
