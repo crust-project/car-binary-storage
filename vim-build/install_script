@@ -22,9 +22,6 @@ def beforeinst():
     print("     Swift code: NOSCCATT")
     print("     Scotiabank; North Langley Centre, 19989 96 Avenue, Langley, BC V1M 3C6, Canada")
 
-def deps():
-    print(":: Dependencies: git, make, gcc, ncurses-dev")
-
 def build():
     print(":: Cloning Vim repository")
     os.system("git clone https://github.com/vim/vim.git || (cd vim && git pull)")
