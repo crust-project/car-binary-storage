@@ -14,12 +14,6 @@ def beforeinst():
     print("Welcome to car!")
     print("This is a basic package printing 'Hello' when you run it.")
 
-def deps():
-    print(":: No dependencies required")
-
-def build():
-    print(":: No build required")
-
 def install():
     """
     Download the example binary and make it executable
