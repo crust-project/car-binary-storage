@@ -1,0 +1,29 @@
+version = "dev"
+description = "Host the Fortis Auris LMS."
+DoNotWriteVersion = True
+
+import os
+
+def deps():
+  exitcode = os.system("pip3 --version")
+  if exitcode != 0:
+    print("Pip is not installed. Pip comes pre-installed with Redrose, if you deleted it, please reinstall it.")
+
+  exitcode = os.system("git --version")
+  if exitcode != 0:
+    print("Git is not installed. Git comes pre-installed with Redrose, if you deleted it, please reinstall it.")
+
+def build():
+  os.system("git clone https://github.com/andrejli/my-first-blog.git")
+  os.chdir("my-first-blog")
+
+  os.system("python -m venv venv")
+  os.system("source venv/bin/activate")
+
+  os.system("pip3 install -r requirements.txt")
+
+  os.system("python3 manage.py migrate")
+  os.system("python manage.py runserver")
+
+def postinst():
+  print("Server stopped")
