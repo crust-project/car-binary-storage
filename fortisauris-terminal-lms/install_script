@@ -1,32 +1,35 @@
-version = "dev"
-description = "Host the Fortis Auris LMS."
-DoNotWriteVersion = True
-
 import os
 import sys
 import subprocess
 
 def deps():
-  exitcode = os.system("pip3 --version")
-  if exitcode != 0:
-    print("Pip is not installed. Pip comes pre-installed with Redrose, if you deleted it, please reinstall it.")
+    exitcode = os.system("pip3 --version")
+    if exitcode != 0:
+        print("Pip is not installed. Pip comes pre-installed with Redrose, if you deleted it, please reinstall it.")
 
-  exitcode = os.system("git --version")
-  if exitcode != 0:
-    print("Git is not installed. Git comes pre-installed with Redrose, if you deleted it, please reinstall it.")
+    exitcode = os.system("git --version")
+    if exitcode != 0:
+        print("Git is not installed. Git comes pre-installed with Redrose, if you deleted it, please reinstall it.")
 
 def build():
-    subprocess.run(["git", "clone", "https://github.com/andrejli/my-first-blog.git"])
+    os.system("git clone https://github.com/andrejli/my-first-blog.git")
     os.chdir("my-first-blog")
 
-    subprocess.run([sys.executable, "-m", "venv", "venv"])
+    # Create virtual environment
+    os.system(f"{sys.executable} -m venv venv")
 
-    # Use the venv python path
+    # Paths to venv python/pip
     venv_python = os.path.join("venv", "bin", "python")
-    subprocess.run([venv_python, "-m", "pip", "install", "-r", "requirements.txt"])
-    subprocess.run([venv_python, "manage.py", "migrate"])
-    subprocess.run([venv_python, "manage.py", "runserver"])
+    venv_pip = os.path.join("venv", "bin", "pip")
 
+    # Install dependencies in venv
+    subprocess.run([venv_pip, "install", "-r", "requirements.txt"], check=True)
+
+    # Run Django commands using venv Python
+    subprocess.run([venv_python, "manage.py", "migrate"], check=True)
+    subprocess.run([venv_python, "manage.py", "runserver"], check=True)
+
+def install():pass
 
 def postinst():
-  print("Server stopped")
+    print("Server stopped")
