@@ -3,6 +3,8 @@ description = "Host the Fortis Auris LMS."
 DoNotWriteVersion = True
 
 import os
+import sys
+import subprocess
 
 def deps():
   exitcode = os.system("pip3 --version")
@@ -14,16 +16,17 @@ def deps():
     print("Git is not installed. Git comes pre-installed with Redrose, if you deleted it, please reinstall it.")
 
 def build():
-  os.system("git clone https://github.com/andrejli/my-first-blog.git")
-  os.chdir("my-first-blog")
+    subprocess.run(["git", "clone", "https://github.com/andrejli/my-first-blog.git"])
+    os.chdir("my-first-blog")
 
-  os.system("python -m venv venv")
-  os.system("source venv/bin/activate")
+    subprocess.run([sys.executable, "-m", "venv", "venv"])
 
-  os.system("pip3 install -r requirements.txt")
+    # Use the venv python path
+    venv_python = os.path.join("venv", "bin", "python")
+    subprocess.run([venv_python, "-m", "pip", "install", "-r", "requirements.txt"])
+    subprocess.run([venv_python, "manage.py", "migrate"])
+    subprocess.run([venv_python, "manage.py", "runserver"])
 
-  os.system("python3 manage.py migrate")
-  os.system("python manage.py runserver")
 
 def postinst():
   print("Server stopped")
