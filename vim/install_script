@@ -1,5 +1,7 @@
 import os
 
+car_deps = ["ncurses"]
+
 description = "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as 'vi' with most UNIX systems and with Apple OS X."
 trusted = "True"
 version = "9.1.1577.source"
@@ -18,10 +20,6 @@ def beforeinst():
     print("     Swift code: NOSCCATT")
     print("     Scotiabank; North Langley Centre, 19989 96 Avenue, Langley, BC V1M 3C6, Canada")
     print(":: You can also use the vim-build package to build Vim from source.")
-
-def deps():
-    print(":: ncurses required")
-    print(":: ncurses will be soon added to car")
 
 def build():
     print(":: No build required")
