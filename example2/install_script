@@ -1,0 +1,4 @@
+car_deps = ["example"]
+
+def install():
+  print("this is a dummy package")
