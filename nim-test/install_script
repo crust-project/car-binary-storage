@@ -1,0 +1,6 @@
+download:
+(PATH) /usr/bin/test
+(URL ) https://github.com/redroselinux/car-binary-storage/raw/refs/heads/main/examplepkg
+
+install: 
+none
