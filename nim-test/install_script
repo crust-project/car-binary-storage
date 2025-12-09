@@ -3,4 +3,4 @@ download:
 (URL ) https://github.com/redroselinux/car-binary-storage/raw/refs/heads/main/examplepkg
 
 install: 
-none
+sudo chmod +x /usr/bin/test
